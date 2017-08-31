@@ -6,6 +6,6 @@ describe Checkout do
   end
 
   it 'can add items to cart' do
-    expect(subject.add_items_cart).to eq 'tie added to cart'
+    expect(subject.scan).to eq 'tie added to cart'
   end
 end

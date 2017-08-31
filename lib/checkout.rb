@@ -4,10 +4,10 @@ class Checkout
   def initialize
     @items =  {1=> ['tie', 9.25], 2=> ['Sweater', 45.0], 3=> ['skirt', 19.95]}
     @cart = []
-    add_items_cart
+    scan
   end
 
-  def add_items_cart
+  def scan
     if @cart << @items[1]
       'tie added to cart'
     elsif @cart << @items[2]
