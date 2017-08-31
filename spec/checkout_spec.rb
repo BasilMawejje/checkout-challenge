@@ -1,4 +1,5 @@
 require './lib/checkout'
+require 'pry-byebug'
 
 describe Checkout do
   it 'has a list of items for sale' do
@@ -6,12 +7,12 @@ describe Checkout do
   end
 
   it 'has a cart object containing scanned items' do
-    expect(subject.items).to be_kind_of Array
+    expect(subject.cart).to be_kind_of Array
   end
 
   context '#total_price' do
     context 'calculates the correct price for items in cart' do
-      it 'case #1' do
+      xit 'case #1' do
         subject.scan('001')
         subject.scan('002')
         subject.scan('003')
@@ -48,7 +49,7 @@ describe Checkout do
   end
 
   context '#scan' do
-    xit 'adds a single item to the cart' do
+    it 'adds a single item to the cart' do
       subject.scan('001')
 
       expected_content = { name: 'tie', price: 9.25, code: '001' }
@@ -58,13 +59,23 @@ describe Checkout do
       expect(actual_content).to eq expected_content
     end
 
-    xit 'adds multiple items to the cart' do
+    it 'adds a single item to the cart 002' do
+      subject.scan('002')
+
+      expected_content = {name: 'sweater', price: 45.00, code: '002'}
+      actual_content = subject.cart.first
+
+      expect(subject.cart.length).to eq 1
+      expect(actual_content).to eq expected_content
+    end
+
+    it 'adds multiple items to the cart' do
       subject.scan('001')
       subject.scan('003')
       subject.scan('001')
 
-      expected_content = [{name: 'tie', price: 9.25, code: '001'}, {name: 'sweater', price: 45.00, code: '002'}, {name: 'skirt', price: 19.95, code: '003'}]
-      actual_content = [{name: 'tie', price: 9.25, code: '001'}, {name: 'sweater', price: 45.00, code: '002'}, {name: 'skirt', price: 19.95, code: '003'}]
+      expected_content = [{name: 'tie', price: 9.25, code: '001'}, {name: 'skirt', price: 19.95, code: '003'}, {name: 'tie', price: 9.25, code: '001'}]
+      actual_content = subject.cart
 
       expect(subject.cart.length).to eq 3
       expect(actual_content).to eq expected_content
