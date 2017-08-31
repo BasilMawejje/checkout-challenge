@@ -8,11 +8,11 @@ class Checkout
   end
 
   def add_items_cart
-    if @items[1] << @cart
+    if @cart << @items[1]
       'tie added to cart'
-    elsif @items[2] << @cart
+    elsif @cart << @items[2]
       'sweater added to cart'
-    elsif @items[3] << @cart
+    elsif @cart << @items[3]
       'skirt added to cart'
     else
       'item not available in store'
