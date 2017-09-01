@@ -17,15 +17,16 @@ class Checkout
       total += item[:price]
     end
 
-=begin    @cart.select { |item| item[:code] == '001'}
-    if @cart.length >= 2
-      @items[1][:price] = 8.5
+    @cart.select { |item| item[:code] == '001'}
+    if @cart.length >= n
+      n >= 2
+      total = total - (n*0.75)
     end
-=end    
+
     if total > 60
       total = total - (0.1 * total)
     end
 
-    total
+    total.round(2)
   end
 end

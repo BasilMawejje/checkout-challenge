@@ -1,3 +1,4 @@
+context '#scan' do
 require './lib/checkout'
 require 'pry-byebug'
 
@@ -35,7 +36,7 @@ describe Checkout do
       end
     end
 
-    xit 'case #3' do
+    it 'case #3' do
       subject.scan('001')
       subject.scan('002')
       subject.scan('001')
@@ -48,7 +49,6 @@ describe Checkout do
     end
   end
 
-  context '#scan' do
     it 'adds a single item to the cart' do
       subject.scan('001')
 
