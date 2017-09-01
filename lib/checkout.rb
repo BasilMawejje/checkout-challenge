@@ -9,4 +9,23 @@ class Checkout
   def scan(code)
     @cart << @items.detect{ |item| item[:code] == code}
   end
+
+  def total_price
+    total = 0
+
+    @cart.each do |item|
+      total += item[:price]
+    end
+
+=begin    @cart.select { |item| item[:code] == '001'}
+    if @cart.length >= 2
+      @items[1][:price] = 8.5
+    end
+=end    
+    if total > 60
+      total = total - (0.1 * total)
+    end
+
+    total
+  end
 end

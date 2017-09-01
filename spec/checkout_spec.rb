@@ -12,7 +12,7 @@ describe Checkout do
 
   context '#total_price' do
     context 'calculates the correct price for items in cart' do
-      xit 'case #1' do
+      it 'case #1' do
         subject.scan('001')
         subject.scan('002')
         subject.scan('003')
@@ -23,7 +23,7 @@ describe Checkout do
         expect(actual_total_price).to eq expected_total_price
       end
 
-      xit 'case #2' do
+      it 'case #2' do
         subject.scan('001')
         subject.scan('003')
         subject.scan('001')
