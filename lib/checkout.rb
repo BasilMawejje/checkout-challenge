@@ -17,10 +17,9 @@ class Checkout
       total += item[:price]
     end
 
-    @cart.select { |item| item[:code] == '001'}
-    if @cart.length >= n
-      n >= 2
-      total = total - (n*0.75)
+    selected_ties = @cart.select { |item| item[:code] == '001'}
+    if selected_ties.length >= 2
+      total = total - (selected_ties.length * (9.25 - 8.5))
     end
 
     if total > 60
